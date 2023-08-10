@@ -17,7 +17,7 @@ st.write(df.head(2))
 #Lucy 
 #Does smoking increase the number of awakenings during the night? Histogram of Awakenings with Smoking as Hue
 
-st.header("Does smoking increase the number of awakenings during the night?")
+st.header("Does smoking decrease Sleep Efficiency during the night?")
 
 cross_tab_prop = pd.crosstab(index=df['Sleep efficiency'],
                              columns=df['Smoking status'],
@@ -37,6 +37,7 @@ plt.xlabel("Sleep efficiency")
 plt.ylabel("Proportion")
 st.pyplot(fig)
 
+
 # Define age groups and labels
 Age_Group = [(9, 21, 'Young'), (22, 34, 'Younger Adult'), (35, 47, 'Middle Aged'), (48, 69, 'Older')]
 # Create Age-Group column based on Age
@@ -50,6 +51,7 @@ df['Age-Group'] = df['Age'].apply(assign_age_group)
 
 st.text("We also wanted to see whether smoking would have an effect on people's sleep quality. Our data showed that the proportion of people who smoked was higher in people who had worse sleep quality, likely since the substances found in cigarettes like nicotine can disrupt sleep and act as a stimulant.")
 #Does age impact one's quality of sleep? Scatterplot
+st.header("Does one's age have an impact on their sleep efficiency?")
 sns.lineplot(
   data = df, 
   x = "Age-Group", 
@@ -68,7 +70,9 @@ sns.lineplot(
 #How caffeine consumption relates to sleep efficiency? Scatterplot
 st.header("How caffeine consumption relates to sleep efficiency? ")
 
-px.scatter(df, x = "Sleep efficiency", y = "Caffeine consumption", color = "Gender", size = "Sleep efficiency")
+fig = px.scatter(df, x = "Sleep efficiency", y = "Caffeine consumption", color = "Gender", size = "Sleep efficiency")
+
+st.plotly_chart(fig)
 
 st.text("There doesn't seem to be much correlation between a person's caffeine consumption and their sleep efficiency as we originally thought. It is pretty varied the amount of sleep efficiency people have, no matter their caffeine consumption.")
 
@@ -93,16 +97,6 @@ df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 df['Wakeup time'] = (df['Wakeup time'].dt.hour % 12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
 
-age_groups = [(9, 21, 'Young'), (22, 34, 'Middle-Age'), (35, 47, 'Older-Middle-Age'), (48, 69, 'Old')]
-
-# Create Age-Group column based on Age
-def assign_age_group(age):
-    for start, end, label in age_groups:
-        if start <= age <= end:
-            return label
-    return 'Unknown'
-
-df['Age-Group'] = df['Age'].apply(assign_age_group)
 
 sns.histplot(df, x = 'Bedtime', hue = "Age-Group")
 
