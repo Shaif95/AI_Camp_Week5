@@ -10,6 +10,12 @@ import warnings
 #adding title
 st.title("Radiant_Raspberries")
 
+st.write(
+  "Hi! My name is Blythe, I'm a grade 11 student from Ontario, Canada. I became interested in AI camp when I heard through my school that they were giving scholarships for their summer programs. I signed up because I want to learn more about coding, and hope this camp will give me a head-start in my learning.")
+
+st.write(
+  "Hi! My name is Lucy, and i'm a rising sophmore. I heard about AI camp from a teacher, and decided to take AI camp since I want to learn more about coding in python as well as how AI is being built and used.")
+
 df = pd.read_csv("Sleep_Efficiency.csv")
 
 st.write(df.head(2))
@@ -19,12 +25,11 @@ st.write("This data set is a collection of information aquired from 452 unique t
 
 #Lucy
 #Does smoking increase the number of awakenings during the night? Histogram of Awakenings with Smoking as Hue
-st.subheader("Does smoking decrease Sleep Efficiency during the night?")
+st.subheader("Does smoking decrease sleep efficiency during the night?")
 cross_tab_prop = pd.crosstab(index=df['Sleep efficiency'],
                              columns=df['Smoking status'],
                              normalize="index")
 # Create a Streamlit app
-st.title("Sleep Efficiency vs. Smoking Status")
 st.write("Cross Tabulation:")
 #st.write(cross_tab_prop.head())
 # Create the bar plot
@@ -77,9 +82,9 @@ df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
-sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency",)
+sns.lineplot(data=df, x="Bedtime", hue = "Age-Group")
 plt.xlabel("Bedtime")
-plt.ylabel("Sleep Efficiency")
+plt.ylabel("Count")
 st.pyplot(fig)
 
 st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
