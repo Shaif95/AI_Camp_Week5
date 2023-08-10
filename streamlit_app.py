@@ -15,6 +15,7 @@ df = pd.read_csv("Sleep_Efficiency.csv")
 st.write(df.head(2))
 
 st.subheader("Introduction : ")
+st.write("This data set is a collection of information aquired from 452 unique test subjects and information about their sleep patterns. It contains data about how well a person slept and how long, as well as information about their lives such as their age, gender, and if they smoke or drink. We used this dataset to analyze trends within the data, and used those trends to determine how different aspects of one's life impacts their sleep.")
 
 #Lucy
 #Does smoking increase the number of awakenings during the night? Histogram of Awakenings with Smoking as Hue
@@ -34,7 +35,7 @@ plt.legend(loc="upper left", ncol=2)
 plt.xlabel("Sleep efficiency")
 plt.ylabel("Proportion")
 st.pyplot(fig)
-st.text(
+st.write(
   "We wanted to see whether smoking would have an effect on people's sleep quality. Our data showed that the proportion of people who smoked was higher in people who had worse sleep quality, likely since the substances found in cigarettes like nicotine can disrupt sleep and act as a stimulant."
 )
 
@@ -57,8 +58,8 @@ st.subheader("Does one's age have an impact on their sleep efficiency?")
 #Create Graph
 fig, ax = plt.subplots()
 sns.lineplot(data=df, x="Age-Group", y="Sleep efficiency", marker="o", ax=ax)
-plt.xlabel("Age Group")
-plt.ylabel("Sleep Efficiency")
+plt.xlabel("Age-Group")
+plt.ylabel("Sleep efficiency")
 st.pyplot(fig)
 #Write Summary
 st.write(
@@ -76,13 +77,24 @@ df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
-sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency")
+sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency",)
 plt.xlabel("Bedtime")
 plt.ylabel("Sleep Efficiency")
 st.pyplot(fig)
-st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
-#Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 
+st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
+
+#Do people who exercise regularly get more sleep? Scatterplot, LinePlot
+st.subheader("Do people who exercise regularly get more sleep?")
+sns.lineplot(
+    data=df,
+    x = 'Exercise frequency', y = 'Sleep efficiency'
+)
+plt.xlabel("Age-Group")
+plt.ylabel("Sleep efficiency")
+st.pyplot(fig)
+
+st.write("The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more oftne ofund themselves sleeping better.")
 #Blythe
 
 #How caffeine consumption relates to sleep efficiency? Scatterplot
@@ -95,9 +107,6 @@ fig = px.scatter(df,
 
 st.plotly_chart(fig)
 st.write(
-  "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
-)
-st.text(
   "There doesn't seem to be much correlation between a person's caffeine consumption and their sleep efficiency as we originally thought. It is pretty varied the amount of sleep efficiency people have, no matter their caffeine consumption."
 )
 
@@ -111,7 +120,7 @@ fig = px.scatter(df,
 
 st.plotly_chart(fig)
 
-st.text(
+st.write(
   "The data shows that people's caffeine consumption isn't necessarily effected by their REM sleep percentage and vice versa. There seems to be a steady number of people getting the same amount of REM sleep no matter their caffeine consumption."
 )
 
@@ -135,7 +144,7 @@ g.map_dataframe(sns.histplot, x='Bedtime', multiple="stack")
 g.set_axis_labels("Bedtime", "Count")
 g.set_titles(col_template="{col_name}")
 st.pyplot(g)
-st.text(
+st.write(
   "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
 )
 
@@ -149,7 +158,7 @@ plt.xlabel("Wake-Up Time")
 plt.ylabel("Count")
 st.pyplot(fig)
 
-st.text(
+st.write(
   "The wakeup times are more varried, not necessarily being devided by age. There are people from each group waking up at different hours of the morning, but the 'Old' do appear to sleep in later than the younger groups."
 )
 #Does gender play a role in how long or the quality of one's sleep? Histogram
@@ -166,7 +175,7 @@ plt.xlabel("Sleep efficienct")
 plt.ylabel("Count")
 st.pyplot(fig)
 
-st.text(
+st.write(
   "In the histogram, the columns are pretty evenly spread on how much sleep efficiency males and females get. Most males however, seem to get a larger amount sleep efficiency, in the 0.7 to 0.9 range. Whereas females are pretty evenly distributed through the scale with a spike at the 0.9 range"
 )
 
@@ -180,5 +189,9 @@ plt.xlabel("Sleep duration")
 plt.ylabel("Count")
 st.pyplot(fig)
 
+st.write(
+  "For sleep duration, the columns are almost completely even between males and females. For each wakeup time, it is fairly balanced on the amount of each gender that wake up; there doesn't seem to be more males or females waking up at any given time."
+)
 
 st.subheader("Conclusion : ")
+st.write("This dataset allowed us to make several connections and draw conclusions about the relationships between different aspects of people's lives and their sleep patterns. We found that smoking often leads to a less efficient sleep, while excersizing frequently and going to bed early makes one's sleep more efficient. We also found that sleep quality tends to improve with age, but that older people tended to go to bed at later times. Meanwhile, we found that there was little correlation between caffiene consumption and sleep quality.")
