@@ -10,11 +10,23 @@ import warnings
 #adding title
 st.title("Radiant_Raspberries")
 
+st.write(
+  "Hi! My name is Blythe, I'm a grade 11 student from Ontario, Canada. I became interested in AI camp when I heard through my school that they were giving scholarships for their summer programs. I signed up because I want to study coding, and hope this camp will give me a head-start in my learning."
+)
+
+st.write(
+  "Hi! My name is Lucy, and i'm a rising sophmore. I heard about AI camp from a teacher, and decided to take AI camp since I want to learn more about coding in python as well as how AI is being built and used."
+)
+
+st.subheader("Introduction : ")
+
+st.write(
+  "This data set is a collection of information aquired from 452 unique test subjects and information about their sleep patterns. It contains data about how well a person slept and how long, as well as information about their lives such as their age, gender, and if they smoke or drink. We used this dataset to analyze trends within the data, and used those trends to determine how different aspects of one's life impacts their sleep."
+)
+
 df = pd.read_csv("Sleep_Efficiency.csv")
 
 st.write(df.head(2))
-
-st.subheader("Introduction : ")
 
 #Lucy
 #Does smoking increase the number of awakenings during the night? Histogram of Awakenings with Smoking as Hue
@@ -182,3 +194,6 @@ st.pyplot(fig)
 
 
 st.subheader("Conclusion : ")
+st.write(
+  "This dataset allowed us to make several connections and draw conclusions about the relationships between different aspects of people's lives and their sleep patterns. We found that smoking often leads to a less efficient sleep, while excersizing frequently and going to bed early makes one's sleep more efficient. We also found that sleep quality tends to improve with age, but that older people tended to go to bed at later times. Meanwhile, we found that there was little correlation between caffiene consumption and sleep quality."
+)
