@@ -11,17 +11,21 @@ import warnings
 st.title("Radiant_Raspberries")
 
 st.write(
-  "Hi! My name is Blythe, I'm a grade 11 student from Ontario, Canada. I became interested in AI camp when I heard through my school that they were giving scholarships for their summer programs. I signed up because I want to study coding, and hope this camp will give me a head-start in my learning.")
+  "Hi! My name is Blythe, I'm a grade 11 student from Ontario, Canada. I became interested in AI camp when I heard through my school that they were giving scholarships for their summer programs. I signed up because I want to study coding, and hope this camp will give me a head-start in my learning."
+)
 
 st.write(
-  "Hi! My name is Lucy, and i'm a rising sophmore. I heard about AI camp from a teacher, and decided to take AI camp since I want to learn more about coding in python as well as how AI is being built and used.")
+  "Hi! My name is Lucy, and i'm a rising sophmore. I heard about AI camp from a teacher, and decided to take AI camp since I want to learn more about coding in python as well as how AI is being built and used."
+)
 
 df = pd.read_csv("Sleep_Efficiency.csv")
 
-st.write(df.head(2))
-
 st.subheader("Introduction : ")
-st.write("This data set is a collection of information aquired from 452 unique test subjects and information about their sleep patterns. It contains data about how well a person slept and how long, as well as information about their lives such as their age, gender, and if they smoke or drink. We used this dataset to analyze trends within the data, and used those trends to determine how different aspects of one's life impacts their sleep.")
+st.write(
+  "This data set is a collection of information aquired from 452 unique test subjects and information about their sleep patterns. It contains data about how well a person slept and how long, as well as information about their lives such as their age, gender, and if they smoke or drink. We used this dataset to analyze trends within the data, and used those trends to determine how different aspects of one's life impacts their sleep."
+)
+
+st.write(df.head(2))
 
 #Lucy
 #Does smoking increase the number of awakenings during the night? Histogram of Awakenings with Smoking as Hue
@@ -71,7 +75,8 @@ st.write(
   "Although we expected one's quality of sleep to deteriorate as they aged, as people's health generally decreases as they get older, our data showed the opposite. As one's age increased, their sleep efficiency did the same, and younger people tended to suffer from lower sleep efficiency. While this could be due to increasing stress amoung teens which leads to lower sleep rates, it could also be a result of the influence of other factors."
 )
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
-st.subheader("Do people who go to bed later or earlier have a better quality of sleep?")
+st.subheader(
+  "Do people who go to bed later or earlier have a better quality of sleep?")
 df['Bedtime'] = pd.to_datetime(df['Bedtime'])
 df['Wakeup time'] = pd.to_datetime(df['Wakeup time'])
 # Convert bedtime and wakeup time to hours, considering AM/PM
@@ -82,24 +87,25 @@ df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
-sns.lineplot(data=df, x="Bedtime", hue = "Age-Group")
+sns.lineplot(data=df, x="Bedtime", hue="Age-Group")
 plt.xlabel("Bedtime")
 plt.ylabel("Count")
 st.pyplot(fig)
 
-st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
+st.write(
+  "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
+)
 
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 st.subheader("Do people who exercise regularly get more sleep?")
-sns.lineplot(
-    data=df,
-    x = 'Exercise frequency', y = 'Sleep efficiency'
-)
+sns.lineplot(data=df, x='Exercise frequency', y='Sleep efficiency')
 plt.xlabel("Age-Group")
 plt.ylabel("Sleep efficiency")
 st.pyplot(fig)
 
-st.write("The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more oftne ofund themselves sleeping better.")
+st.write(
+  "The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more oftne ofund themselves sleeping better."
+)
 #Blythe
 
 #How caffeine consumption relates to sleep efficiency? Scatterplot
@@ -199,4 +205,6 @@ st.write(
 )
 
 st.subheader("Conclusion : ")
-st.write("This dataset allowed us to make several connections and draw conclusions about the relationships between different aspects of people's lives and their sleep patterns. We found that smoking often leads to a less efficient sleep, while excersizing frequently and going to bed early makes one's sleep more efficient. We also found that sleep quality tends to improve with age, but that older people tended to go to bed at later times. Meanwhile, we found that there was little correlation between caffiene consumption and sleep quality.")
+st.write(
+  "This dataset allowed us to make several connections and draw conclusions about the relationships between different aspects of people's lives and their sleep patterns. We found that smoking often leads to a less efficient sleep, while excersizing frequently and going to bed early makes one's sleep more efficient. We also found that sleep quality tends to improve with age, but that older people tended to go to bed at later times. Meanwhile, we found that there was little correlation between caffiene consumption and sleep quality."
+)
