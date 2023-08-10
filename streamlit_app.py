@@ -65,7 +65,7 @@ st.write(
   "Although we expected one's quality of sleep to deteriorate as they aged, as people's health generally decreases as they get older, our data showed the opposite. As one's age increased, their sleep efficiency did the same, and younger people tended to suffer from lower sleep efficiency. While this could be due to increasing stress amoung teens which leads to lower sleep rates, it could also be a result of the influence of other factors."
 )
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
-
+st.subheader("Do people who go to bed later or earlier have a better quality of sleep?")
 df['Bedtime'] = pd.to_datetime(df['Bedtime'])
 df['Wakeup time'] = pd.to_datetime(df['Wakeup time'])
 # Convert bedtime and wakeup time to hours, considering AM/PM
@@ -80,6 +80,7 @@ sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency")
 plt.xlabel("Bedtime")
 plt.ylabel("Sleep Efficiency")
 st.pyplot(fig)
+st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 
 #Blythe
@@ -164,5 +165,20 @@ sns.histplot(data=df,
 plt.xlabel("Sleep efficienct")
 plt.ylabel("Count")
 st.pyplot(fig)
+
+st.text(
+  "In the histogram, the columns are pretty evenly spread on how much sleep efficiency males and females get. Most males however, seem to get a larger amount sleep efficiency, in the 0.7 to 0.9 range. Whereas females are pretty evenly distributed through the scale with a spike at the 0.9 range"
+)
+
+fig, ax = plt.subplots()
+sns.histplot(data=df,
+             x='Sleep duration',
+             hue="Gender",
+             multiple="stack",
+             ax=ax)
+plt.xlabel("Sleep duration")
+plt.ylabel("Count")
+st.pyplot(fig)
+
 
 st.subheader("Conclusion : ")
