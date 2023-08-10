@@ -65,20 +65,19 @@ st.write(
   "Although we expected one's quality of sleep to deteriorate as they aged, as people's health generally decreases as they get older, our data showed the opposite. As one's age increased, their sleep efficiency did the same, and younger people tended to suffer from lower sleep efficiency. While this could be due to increasing stress amoung teens which leads to lower sleep rates, it could also be a result of the influence of other factors."
 )
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
-url = "https://raw.githubusercontent.com/Shaif95/AI_Camp_Week5/main/Sleep_Efficiency.csv"
-df = pd.read_csv(url)
 
 df['Bedtime'] = pd.to_datetime(df['Bedtime'])
 df['Wakeup time'] = pd.to_datetime(df['Wakeup time'])
-
 # Convert bedtime and wakeup time to hours, considering AM/PM
 df['Bedtime'] = (df['Bedtime'].dt.hour % 12) + (df['Bedtime'].dt.minute / 60)
 df['Bedtime'] = df['Bedtime'].apply(lambda x: x if x < 12 else x - 12)
 df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 
-df['Wakeup time'] = (df['Wakeup time'].dt.hour % 12) + (df['Wakeup time'].dt.minute / 60)
+df['Wakeup time'] = (df['Wakeup time'].dt.hour %
+                     12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
-sns.lineplot(data = df, x = "Bedtime", y = "Sleep efficiency")
+sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency")
+In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 
 #Blythe
@@ -92,7 +91,9 @@ fig = px.scatter(df,
                  color="Gender")
 
 st.plotly_chart(fig)
-st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
+st.write(
+  "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
+)
 st.text(
   "There doesn't seem to be much correlation between a person's caffeine consumption and their sleep efficiency as we originally thought. It is pretty varied the amount of sleep efficiency people have, no matter their caffeine consumption."
 )
@@ -132,14 +133,16 @@ plt.xlabel("Bedtime")
 plt.ylabel("Count")
 st.pyplot(fig)
 
-
-
 st.text(
   "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
 )
 
 fig, ax = plt.subplots()
-sns.histplot(data=df, x='Wakeup time', hue="Age-Group", multiple="stack", ax=ax)
+sns.histplot(data=df,
+             x='Wakeup time',
+             hue="Age-Group",
+             multiple="stack",
+             ax=ax)
 plt.xlabel("Wake-Up Time")
 plt.ylabel("Count")
 st.pyplot(fig)
@@ -151,9 +154,6 @@ st.text(
 st.subheader(
   "Does gender play a role in how long or the quality of one's sleep?")
 
-
+sns.histplot(df, x = 'Sleep efficiency', hue = 'Gender')
 
 st.subheader("Conclusion : ")
-
-
-
