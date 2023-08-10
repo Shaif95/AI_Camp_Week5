@@ -11,7 +11,7 @@ import warnings
 st.title("Radiant_Raspberries")
 
 st.write(
-  "Hi! My name is Blythe, I'm a grade 11 student from Ontario, Canada. I became interested in AI camp when I heard through my school that they were giving scholarships for their summer programs. I signed up because I want to learn more about coding, and hope this camp will give me a head-start in my learning.")
+  "Hi! My name is Blythe, I'm a grade 11 student from Ontario, Canada. I became interested in AI camp when I heard through my school that they were giving scholarships for their summer programs. I signed up because I want to study coding, and hope this camp will give me a head-start in my learning.")
 
 st.write(
   "Hi! My name is Lucy, and i'm a rising sophmore. I heard about AI camp from a teacher, and decided to take AI camp since I want to learn more about coding in python as well as how AI is being built and used.")
