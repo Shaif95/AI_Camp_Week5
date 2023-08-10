@@ -37,19 +37,20 @@ st.text("We wanted to see whether smoking would have an effect on people's sleep
 #Does age impact one's quality of sleep? Scatterplot
 # Define age groups and labels
 Age_Group = [(9, 21, 'Young'), (22, 34, 'Younger Adult'), (35, 47, 'Middle Aged'), (48, 69, 'Older')]
-# Create Age-Group column based on Age
 def assign_age_group(age):
     for start, end, label in Age_Group:
         if start <= age <= end:
             return label
     return 'Unknown'
-
 df['Age-Group'] = df['Age'].apply(assign_age_group)
+#Write title
 st.header("Does one's age have an impact on their sleep efficiency?")
+#Create Graph
 sns.lineplot(
   data = df, 
   x = "Age-Group", 
   y = "Sleep efficiency")
+#Write Summary
 
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
 
