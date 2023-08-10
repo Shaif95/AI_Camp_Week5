@@ -46,12 +46,13 @@ df['Age-Group'] = df['Age'].apply(assign_age_group)
 #Write title
 st.header("Does one's age have an impact on their sleep efficiency?")
 #Create Graph
-sns.lineplot(
-  data = df, 
-  x = "Age-Group", 
-  y = "Sleep efficiency")
+fig, ax = plt.subplots()
+sns.lineplot(data=df, x="Age-Group", y="Sleep efficiency", marker="o", ax=ax)
+plt.xlabel("Age Group")
+plt.ylabel("Sleep Efficiency")
+st.pyplot(fig)
 #Write Summary
-
+st.write("Although we expected one's quality of sleep to deteriorate as they aged, as people's health generally decreases as they get older, our data showed the opposite. As one's age increased, their sleep efficiency did the same, and younger people tended to suffer from lower sleep efficiency. While this could be due to increasing stress amoung teens which leads to lower sleep rates, it could also be a result of the influence of other factors.")
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
 
 
