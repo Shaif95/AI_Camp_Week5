@@ -77,7 +77,9 @@ df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
 sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency")
-In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.
+plt.xlabel("Bedtime")
+plt.ylabel("Sleep Efficiency")
+st.pyplot(fig)
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 
 #Blythe
@@ -127,12 +129,11 @@ df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
 
-fig, ax = plt.subplots()
-sns.histplot(data=df, x='Bedtime', hue="Age-Group", multiple="stack", ax=ax)
-plt.xlabel("Bedtime")
-plt.ylabel("Count")
-st.pyplot(fig)
-
+g = sns.FacetGrid(data=df, col="Age-Group", margin_titles=True)
+g.map_dataframe(sns.histplot, x='Bedtime', multiple="stack")
+g.set_axis_labels("Bedtime", "Count")
+g.set_titles(col_template="{col_name}")
+st.pyplot(g)
 st.text(
   "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
 )
@@ -154,6 +155,14 @@ st.text(
 st.subheader(
   "Does gender play a role in how long or the quality of one's sleep?")
 
-sns.histplot(df, x = 'Sleep efficiency', hue = 'Gender')
+fig, ax = plt.subplots()
+sns.histplot(data=df,
+             x='Sleep efficiency',
+             hue="Gender",
+             multiple="stack",
+             ax=ax)
+plt.xlabel("Sleep efficienct")
+plt.ylabel("Count")
+st.pyplot(fig)
 
 st.subheader("Conclusion : ")
