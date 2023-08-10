@@ -77,6 +77,9 @@ st.write(
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
 st.subheader(
   "Do people who go to bed later or earlier have a better quality of sleep?")
+
+df = pd.read_csv("Sleep_Efficiency.csv")
+
 df['Bedtime'] = pd.to_datetime(df['Bedtime'])
 df['Wakeup time'] = pd.to_datetime(df['Wakeup time'])
 # Convert bedtime and wakeup time to hours, considering AM/PM
