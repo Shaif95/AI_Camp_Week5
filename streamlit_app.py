@@ -17,9 +17,20 @@ st.write(df.head(2))
 #Lucy 
 #Does smoking increase the number of awakenings during the night? Histogram of Awakenings with Smoking as Hue
 
-st.write("Does smoking increase the number of awakenings during the night?")
+st.header("Does smoking increase the number of awakenings during the night?")
+cross_tab = pd.crosstab(index=df['Sleep efficiency'],
+                        columns=df['Smoking status'])
+cross_tab.head(1)
+cross_tab_prop.plot(kind='bar', 
+                    stacked=True, 
+                    colormap='tab10', 
+                    figsize=(10, 6))
 
-
+plt.legend(loc="upper left", ncol=2)
+plt.xlabel("Sleep efficiency")
+plt.ylabel("Proportion")
+plt.show()
+st.text("We also wanted to see whether smoking would have an effect on people's sleep quality. Our data showed that the proportion of people who smoked was higher in people who had worse sleep quality, likely since the substances found in cigarettes like nicotine can disrupt sleep and act as a stimulant.")
 #Does age impact one's quality of sleep? Scatterplot
 
 
@@ -34,13 +45,13 @@ st.write("Does smoking increase the number of awakenings during the night?")
 #Blythe
 
 #How caffeine consumption relates to sleep efficiency? Scatterplot
-st.write("How caffeine consumption relates to sleep efficiency? ")
+st.header("How caffeine consumption relates to sleep efficiency? ")
 
 #Do people who get less REM sleep tend to drink more caffeine? Scatterplot
-st.write("Do people who get less REM sleep tend to drink more caffeine?")
+st.header("Do people who get less REM sleep tend to drink more caffeine?")
 
 #Is age related to bedtime/wakeup time? ScatterPlot, Histogram
-st.write("Is age related to bedtime/wakeup time?")
+st.header("Is age related to bedtime/wakeup time?")
 
 #Does gender play a role in how long or the quality of one's sleep? Histogram
-st.write("Does gender play a role in how long or the quality of one's sleep?")
+st.header("Does gender play a role in how long or the quality of one's sleep?")
