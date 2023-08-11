@@ -91,6 +91,7 @@ df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
 sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency")
 plt.xlabel("Bedtime")
 plt.ylabel("Sleep Efficiency")
+ax.tick_params(axis='x', labelsize=5)
 st.pyplot(fig)
 st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
