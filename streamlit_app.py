@@ -46,7 +46,7 @@ plt.legend(loc="upper left", ncol=2)
 plt.xlabel("Sleep efficiency")
 plt.ylabel("Proportion")
 st.pyplot(fig)
-st.text(
+st.write(
   "We wanted to see whether smoking would have an effect on people's sleep quality. Our data showed that the proportion of people who smoked was higher in people who had worse sleep quality, likely since the substances found in cigarettes like nicotine can disrupt sleep and act as a stimulant."
 )
 
