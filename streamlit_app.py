@@ -110,12 +110,12 @@ st.write(
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 st.subheader(
   "Do people who exercise regularly get more sleep?")
-st.write("Sleep Efficiency vs. Excersize")
+st.write("Sleep Efficiency vs. Exercise")
 fig, ax = plt.subplots()
 sns.lineplot(
     data=df,
     x = 'Exercise frequency', y = 'Sleep efficiency', ax=ax)
-plt.xlabel("Excercise frequency")
+plt.xlabel("Exercise frequency")
 plt.ylabel("Sleep Efficiency")
 ax.tick_params(axis='x', labelsize=5)
 st.pyplot(fig)
