@@ -107,7 +107,18 @@ st.write(
   "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
 )
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
+st.subheader(
+  "Do people who exercise regularly get more sleep?")
 
+fig, ax = plt.subplots()
+sns.lineplot(
+    data=df,
+    x = 'Exercise frequency', y = 'Sleep efficiency', ax=ax)
+plt.xlabel("Excercise frequency")
+plt.ylabel("Sleep Efficiency")
+ax.tick_params(axis='x', labelsize=5)
+st.pyplot(fig)
+st.write("")
 #Blythe
 
 #How caffeine consumption relates to sleep efficiency? Scatterplot
