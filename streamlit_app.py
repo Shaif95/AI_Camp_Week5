@@ -155,35 +155,11 @@ df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
 
-
-
-fig, ax = plt.subplots()
-
-
-# Grouped histogram using Pandas' built-in plotting function
-df.groupby('Age-Group')['Bedtime'].plot(kind='hist', alpha=0.5, legend=True)
-
-# Set axis labels and title
-plt.xlabel("Bedtime")
-plt.ylabel("Count")
-plt.title("Bedtime Distribution by Age Group")
-
-# Display the legend
-plt.legend()
-
-# Display the plot using Streamlit
-st.pyplot(fig)
-
-
-
-
-
-
-
-
-
-
-
+g = sns.FacetGrid(data=df, col="Age-Group", margin_titles=True)
+g.map_dataframe(sns.histplot, x='Bedtime', multiple="stack")
+g.set_axis_labels("Bedtime", "Count")
+g.set_titles(col_template="{col_name}")
+st.pyplot(g)
 st.text(
   "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
 )
