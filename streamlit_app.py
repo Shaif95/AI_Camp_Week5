@@ -118,7 +118,7 @@ plt.ylabel("Sleep Efficiency")
 ax.tick_params(axis='x', labelsize=5)
 st.pyplot(fig)
 st.write(
-  "The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more often found themselves sleeping better."
+  "The correlation between better sleep and frequent exercize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they exercised, with a positive curve showing that many of the people who exercised more often found themselves sleeping better."
 )
 #Blythe
 
@@ -208,5 +208,5 @@ st.write(
 
 st.subheader("Conclusion : ")
 st.write(
-  "This dataset allowed us to make several connections and draw conclusions about the relationships between different aspects of people's lives and their sleep patterns. We found that smoking often leads to a less efficient sleep, while excersizing frequently and going to bed early makes one's sleep more efficient. We also found that sleep quality tends to improve with age, but that older people tended to go to bed at later times. Meanwhile, we found that there was little correlation between caffiene consumption and sleep quality."
+  "This dataset allowed us to make several connections and draw conclusions about the relationships between different aspects of people's lives and their sleep patterns. We found that smoking often leads to a less efficient sleep, while exercising frequently and going to bed early makes one's sleep more efficient. We also found that sleep quality tends to improve with age, but that older people tended to go to bed at later times. Meanwhile, we found that there was little correlation between caffiene consumption and sleep quality."
 )
