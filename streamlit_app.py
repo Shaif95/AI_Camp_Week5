@@ -169,7 +169,7 @@ g.set_axis_labels("Bedtime", "Count")
 g.set_titles(col_template="{col_name}")
 st.pyplot(g)
 st.write(
-  "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
+  "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past. However, this is not necesarily caused by age, moreso the freedoms that come with getting older."
 )
 
 #Does gender play a role in how long or the quality of one's sleep? Histogram
@@ -199,6 +199,10 @@ sns.histplot(data=df,
 plt.xlabel("Sleep duration")
 plt.ylabel("Count")
 st.pyplot(fig)
+
+st.write(
+  "Similar to the histogram comparing gender and sleep efficiency, the columns are pretty even on comparing gender and sleep duration. There isn't any time that more males or females tend to sleep."
+)
 
 st.subheader("Conclusion : ")
 st.write(
