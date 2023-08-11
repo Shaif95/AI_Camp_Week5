@@ -131,9 +131,6 @@ fig = px.scatter(df,
 
 st.plotly_chart(fig)
 st.write(
-  "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
-)
-st.text(
   "There doesn't seem to be much correlation between a person's caffeine consumption and their sleep efficiency as we originally thought. It is pretty varied the amount of sleep efficiency people have, no matter their caffeine consumption."
 )
 
@@ -147,7 +144,7 @@ fig = px.scatter(df,
 
 st.plotly_chart(fig)
 
-st.text(
+st.write(
   "The data shows that people's caffeine consumption isn't necessarily effected by their REM sleep percentage and vice versa. There seems to be a steady number of people getting the same amount of REM sleep no matter their caffeine consumption."
 )
 
@@ -171,7 +168,7 @@ g.map_dataframe(sns.histplot, x='Bedtime', multiple="stack")
 g.set_axis_labels("Bedtime", "Count")
 g.set_titles(col_template="{col_name}")
 st.pyplot(g)
-st.text(
+st.write(
   "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
 )
 
@@ -189,7 +186,7 @@ plt.xlabel("Sleep efficienct")
 plt.ylabel("Count")
 st.pyplot(fig)
 
-st.text(
+st.write(
   "In the histogram, the columns are pretty evenly spread on how much sleep efficiency males and females get. Most males however, seem to get a larger amount sleep efficiency, in the 0.7 to 0.9 range. Whereas females are pretty evenly distributed through the scale with a spike at the 0.9 range"
 )
 
