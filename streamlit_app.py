@@ -164,19 +164,6 @@ st.text(
   "Based on the histogram, people of older age seem to go to bed at a later time. There are two fairly distinct time slots where the younger group tend to go to bed before midnight, and the older group stay up past."
 )
 
-fig, ax = plt.subplots()
-sns.histplot(data=df,
-             x='Wakeup time',
-             hue="Age-Group",
-             multiple="stack",
-             ax=ax)
-plt.xlabel("Wake-Up Time")
-plt.ylabel("Count")
-st.pyplot(fig)
-
-st.text(
-  "The wakeup times are more varried, not necessarily being devided by age. There are people from each group waking up at different hours of the morning, but the 'Old' do appear to sleep in later than the younger groups."
-)
 #Does gender play a role in how long or the quality of one's sleep? Histogram
 st.subheader(
   "Does gender play a role in how long or the quality of one's sleep?")
