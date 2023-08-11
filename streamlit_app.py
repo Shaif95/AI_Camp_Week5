@@ -67,6 +67,7 @@ df['Age-Group'] = df['Age'].apply(assign_age_group)
 #Write title
 st.subheader("Does one's age have an impact on their sleep efficiency?")
 #Create Graph
+st.write("Sleep Efficiency vs. Age")
 fig, ax = plt.subplots()
 sns.lineplot(data=df, x="Age-Group", y="Sleep efficiency", marker="o", ax=ax)
 plt.xlabel("Age Group")
@@ -89,7 +90,7 @@ df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
-
+st.write("Sleep Efficiency vs. Bedtime")
 fig, ax = plt.subplots()
 sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency", ax=ax)
 
@@ -109,7 +110,7 @@ st.write(
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 st.subheader(
   "Do people who exercise regularly get more sleep?")
-
+st.write("Sleep Efficiency vs. Excersize")
 fig, ax = plt.subplots()
 sns.lineplot(
     data=df,
