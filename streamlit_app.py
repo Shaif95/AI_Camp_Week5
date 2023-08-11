@@ -18,8 +18,9 @@ st.write(
   "Hi! My name is Lucy, and i'm a rising sophmore. I heard about AI camp from a teacher, and decided to take AI camp since I want to learn more about coding in python as well as how AI is being built and used."
 )
 
-st.subheader("Introduction : ")
+st.subheader("Introduction : ") 
 
+st.text("Lucy")
 st.write(
   "This data set is a collection of information aquired from 452 unique test subjects and information about their sleep patterns. It contains data about how well a person slept and how long, as well as information about their lives such as their age, gender, and if they smoke or drink. We used this dataset to analyze trends within the data, and used those trends to determine how different aspects of one's life impacts their sleep."
 )
@@ -108,22 +109,22 @@ st.write(
   "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
 )
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
-st.subheader(
-  "Do people who exercise regularly get more sleep?")
+st.subheader("Do people who exercise regularly get more sleep?")
 st.write("Sleep Efficiency vs. Exercise")
 fig, ax = plt.subplots()
-sns.lineplot(
-    data=df,
-    x = 'Exercise frequency', y = 'Sleep efficiency', ax=ax)
+sns.lineplot(data=df, x='Exercise frequency', y='Sleep efficiency', ax=ax)
 plt.xlabel("Exercise frequency")
 plt.ylabel("Sleep Efficiency")
 ax.tick_params(axis='x', labelsize=5)
 st.pyplot(fig)
-st.write("The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more often found themselves sleeping better.")
+st.write(
+  "The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more often found themselves sleeping better."
+)
 #Blythe
 
 #How caffeine consumption relates to sleep efficiency? Scatterplot
-st.subheader("How caffeine consumption relates to sleep efficiency? ")
+st.text("Blythe")
+st.subheader("How caffeine consumption relates to sleep efficiency? ") 
 
 fig = px.scatter(df,
                  x="Sleep efficiency",
