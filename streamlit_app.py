@@ -35,7 +35,7 @@ cross_tab_prop = pd.crosstab(index=df['Sleep efficiency'],
                              columns=df['Smoking status'],
                              normalize="index")
 # Create a Streamlit app
-st.title("Sleep Efficiency vs. Smoking Status")
+st.write("Sleep Efficiency vs. Smoking Status")
 st.write("Cross Tabulation:")
 #st.write(cross_tab_prop.head())
 # Create the bar plot
