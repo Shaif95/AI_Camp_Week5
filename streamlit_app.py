@@ -118,7 +118,7 @@ plt.xlabel("Excercise frequency")
 plt.ylabel("Sleep Efficiency")
 ax.tick_params(axis='x', labelsize=5)
 st.pyplot(fig)
-st.write("")
+st.write("The correlation between better sleep and frequent excersize has been endorsed by many scientists and health reaserchers. Our data also demonstrates a connection between the efficiency of peoples' sleep and how often they excersized, with a positive curve showing that many of the people who excersized more often found themselves sleeping better.")
 #Blythe
 
 #How caffeine consumption relates to sleep efficiency? Scatterplot
