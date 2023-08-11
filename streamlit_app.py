@@ -77,7 +77,8 @@ st.write(
   "Although we expected one's quality of sleep to deteriorate as they aged, as people's health generally decreases as they get older, our data showed the opposite. As one's age increased, their sleep efficiency did the same, and younger people tended to suffer from lower sleep efficiency. While this could be due to increasing stress amoung teens which leads to lower sleep rates, it could also be a result of the influence of other factors."
 )
 #Do people who go to bed later or earlier have a better quality of sleep? Scatterplot
-st.subheader("Do people who go to bed later or earlier have a better quality of sleep?")
+st.subheader(
+  "Do people who go to bed later or earlier have a better quality of sleep?")
 df['Bedtime'] = pd.to_datetime(df['Bedtime'])
 df['Wakeup time'] = pd.to_datetime(df['Wakeup time'])
 # Convert bedtime and wakeup time to hours, considering AM/PM
@@ -88,7 +89,6 @@ df['Bedtime'] = df['Bedtime'].apply(lambda x: x * -1 if x > 6 else x)
 df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
-
 
 fig, ax = plt.subplots()
 sns.lineplot(data=df, x="Bedtime", y="Sleep efficiency", ax=ax)
@@ -103,9 +103,9 @@ ax.tick_params(axis='x', labelsize=5)
 # Display the plot using Streamlit
 st.pyplot(fig)
 
-
-
-st.write("In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable.")
+st.write(
+  "In general, those who went to bed earlier had a greater sleep efficiency, although the negative trend was less pronounced than we thought, and was pretty variable."
+)
 #Do people who exercise regularly get more sleep? Scatterplot, LinePlot
 
 #Blythe
@@ -155,7 +155,7 @@ df['Wakeup time'] = (df['Wakeup time'].dt.hour %
                      12) + (df['Wakeup time'].dt.minute / 60)
 df['Wakeup time'] = df['Wakeup time'].apply(lambda x: x if x < 12 else x - 12)
 
-g = sns.FacetGrid(data=df, col="Age-Group", margin_titles=True)
+g = sns.lineplot(data=df, col="Age-Group", margin_titles=True)
 g.map_dataframe(sns.histplot, x='Bedtime', multiple="stack")
 g.set_axis_labels("Bedtime", "Count")
 g.set_titles(col_template="{col_name}")
@@ -204,7 +204,6 @@ sns.histplot(data=df,
 plt.xlabel("Sleep duration")
 plt.ylabel("Count")
 st.pyplot(fig)
-
 
 st.subheader("Conclusion : ")
 st.write(
